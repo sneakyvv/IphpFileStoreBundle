@@ -55,7 +55,14 @@ class FileTypeBindSubscriber implements EventSubscriberInterface
 
         $obj = $form->getParent()->getData();
 
-        if (!$obj) return;
+        if (!$obj) {
+            if ($data_class = $form->getParent()->getConfig()->getOption('data_class')) {
+                $obj = new $data_class();
+            }
+            else {
+                return;
+            }
+        }
 
         $mapping = $this->mappingFactory->getMappingFromField($obj,
             $this->dataStorage->getReflectionClass($obj),

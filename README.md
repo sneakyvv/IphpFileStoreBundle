@@ -22,11 +22,17 @@ For Russian documentation see http://symfonydev.ru/iphpfilestorebundle/
 
 Add the following lines in your composer.json:
 ```
-{
     "require": {
-        "iphp/filestore-bundle" : "@stable" 
-    }
-}
+        ...
+        "iphp/filestore-bundle" : "dev-fix_embedded",
+        ...
+    },
+   "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/sneakyvv/IphpFileStoreBundle.git"
+        }
+    ],
 ```
 
 ### Initialize the bundle
